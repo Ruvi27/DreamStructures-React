@@ -1,31 +1,34 @@
 // src/components/Navbar.jsx
 
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
-// Import the new CSS for styling
-import './Navbar.css';
-
-// STEP 1: Import your logo image from the assets folder
-import logoImage from '../assets/DSLogo.svg';
-
-// STEP 2: The old inline SVG component 'Logo' is no longer needed and can be deleted.
+// Import your logo image
+import logoImage from '../assets/DSLogo44.png';
 
 const Navbar = () => {
-    // State logic for scroll and menu remains unchanged
+    // State for navbar visibility on scroll and menu toggle
     const [isNavVisible, setIsNavVisible] = useState(true);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+    // NEW: State to track if the page is scrolled
+    const [isScrolled, setIsScrolled] = useState(false);
     const lastScrollTop = useRef(0);
 
     useEffect(() => {
         const handleScroll = () => {
-            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Logic for showing/hiding navbar
             if (currentScroll > lastScrollTop.current && currentScroll > 80) {
                 setIsNavVisible(false);
             } else {
                 setIsNavVisible(true);
             }
             lastScrollTop.current = currentScroll <= 0 ? 0 : currentScroll;
+
+            // NEW: Set scrolled state based on scroll position
+            setIsScrolled(currentScroll > 50);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -34,11 +37,7 @@ const Navbar = () => {
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
-        if (!isMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = !isMenuOpen ? 'hidden' : '';
     };
 
     const closeMenu = () => {
@@ -46,37 +45,94 @@ const Navbar = () => {
         document.body.style.overflow = '';
     };
 
+    // Array for navigation links remains the same
+    const navLinks = [
+        { path: "/", name: "Home" },
+        { path: "/services", name: "Services" },
+        { path: "/portfolio", name: "Portfolio" },
+        { path: "/about", name: "About Us" },
+        { path: "/quote", name: "Get a Quote" },
+        { path: "/contact", name: "Contact Us" },
+    ];
+
     return (
         <>
-            <header className="main-header" style={{ top: isNavVisible ? '0' : '-100px' }}>
-                <div className="navbar-content-wrapper">
-                    <NavLink to="/" className="logo-link" onClick={closeMenu}>
-                        {/* STEP 3: Replace the <Logo /> component with an <img> tag */}
-                        <img src={logoImage} alt="Company Logo" className="logo-image" />
-                    </NavLink>
-                    
-                    <button 
-                        className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`} 
+            {/* Main Header Bar - UPDATED className for scroll effect */}
+            <header
+                className={`fixed top-0 left-0 z-[9999] w-full px-6 py-5 transition-all duration-300 ease-in-out md:px-10 ${
+                    isNavVisible ? 'top-0' : '-top-24'
+                } ${isScrolled ? 'bg-black/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}
+            >
+                <div className="mx-auto flex max-w-screen-xl items-center justify-between">
+                    {/* Logo */}
+                    <Link to="/">
+                        <img
+                            src={logoImage}
+                            alt="Company Logo"
+                            className="h-10 transition-transform duration-300 lg:h-14"
+                        />
+                    </Link>
+
+                    {/* Hamburger Menu Button (no changes) */}
+                    <button
                         onClick={toggleMenu}
+                        className="relative z-[10002] h-6 w-8"
                         aria-label="Toggle menu"
                     >
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span
+                            className={`absolute block h-0.5 w-full rounded-full bg-white transition-all duration-300 ${
+                                isMenuOpen ? 'top-1/2 -translate-y-1/2 rotate-45 !bg-[#C0A080]' : 'top-0'
+                            }`}
+                        ></span>
+                        <span
+                            className={`absolute top-1/2 block h-0.5 w-full -translate-y-1/2 rounded-full bg-white transition-all duration-300 ${
+                                isMenuOpen ? 'opacity-0' : 'opacity-100'
+                            }`}
+                        ></span>
+                        <span
+                            className={`absolute block h-0.5 w-full rounded-full bg-white transition-all duration-300 ${
+                                isMenuOpen ? 'bottom-1/2 translate-y-1/2 -rotate-45 !bg-[#C0A080]' : 'bottom-0'
+                            }`}
+                        ></span>
                     </button>
                 </div>
             </header>
 
-            {/* The menu overlay remains unchanged */}
-            <div className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}>
-                <nav className="overlay-nav">
-                    <ul>
-                        <li><NavLink to="/" onClick={closeMenu}>Home</NavLink></li>
-                        <li><NavLink to="/services" onClick={closeMenu}>Services</NavLink></li>
-                        <li><NavLink to="/portfolio" onClick={closeMenu}>Portfolio</NavLink></li>
-                        <li><NavLink to="/about" onClick={closeMenu}>About Us</NavLink></li>
-                        <li><NavLink to="/quote" onClick={closeMenu}>Get a Quote</NavLink></li>
-                        <li><NavLink to="/contact" onClick={closeMenu}>Contact Us</NavLink></li>
+            {/* Full-screen Menu Overlay */}
+            <div
+                className={`fixed inset-0 z-[10001] flex items-center justify-center bg-black/90 transition-opacity duration-500 ${
+                    isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                }`}
+            >
+                {/* NEW: Close button for the popup */}
+                <button
+                    onClick={closeMenu}
+                    className="absolute top-5 right-6 z-[10003] h-10 w-10 text-white md:top-8 md:right-10"
+                    aria-label="Close menu"
+                >
+                    <span className="absolute left-1/2 top-1/2 block h-0.5 w-6 -translate-x-1/2 -translate-y-1/2 rotate-45 transform bg-[#C0A080]"></span>
+                    <span className="absolute left-1/2 top-1/2 block h-0.5 w-6 -translate-x-1/2 -translate-y-1/2 -rotate-45 transform bg-[#C0A080]"></span>
+                </button>
+
+                <nav>
+                    <ul className="text-center">
+                        {navLinks.map((link, index) => (
+                            <li
+                                key={link.name}
+                                className={`transform transition-all duration-300 ${
+                                    isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'
+                                }`}
+                                style={{ transitionDelay: isMenuOpen ? `${150 + index * 50}ms` : '0ms' }}
+                            >
+                                <NavLink
+                                    to={link.path}
+                                    onClick={closeMenu}
+                                    className="block py-3 text-4xl font-bold text-white transition-colors duration-300 [font-family:_'Playfair_Display',_serif] hover:text-[#C0A080] md:text-5xl"
+                                >
+                                    {link.name}
+                                </NavLink>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </div>

@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 html {
   scroll-behavior: smooth;
 } 
@@ -25,26 +27,7 @@ header {
 }
 
 
-/* For screens below 768px (tablets & phones) */
-@media (max-width: 768px) {
-  .navbar-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-  }
 
-  .navbar ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-    margin-top: 10px;
-  }
-
-  .navbar ul li {
-    width: 100%;
-    text-align: left;
-  }
-}
 
 @media (max-width: 768px) {
   .slider video,
@@ -456,30 +439,6 @@ footer {
   color: var(--accent);
 }
 
-/* Show toggle on small screens */
-@media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-
-  .navbar ul {
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    background: #111;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 60px;
-  }
-
-  .navbar ul.active {
-    display: flex;
-  }
-}
 
 @media (max-width: 768px) {
   .slider video,
@@ -545,31 +504,6 @@ footer {
   color: var(--accent);
 }
 
-/* Show toggle + hide nav links on mobile */
-@media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1100;
-  }
-
-  .navbar ul {
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    background: #111;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 60px;
-  }
-
-  .navbar ul.active {
-    display: flex;
-  }
-}
 
 .footer-socials {
   display: flex;
@@ -617,43 +551,13 @@ footer {
 
 /* Basic Navbar Styling */
 header {
-  background: #111;
   position: fixed;
   top: 0; left: 0;
   width: 100%;
   z-index: 1000;
 }
 
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 15px 20px;
-}
 
-.logo img {
-  height: px;
-}
-
-/* Desktop menu */
-.navbar ul {
-  display: flex;
-  list-style: none;
-  gap: 25px;
-}
-
-.navbar ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-  transition: color 0.3s;
-}
-
-.navbar ul li a:hover {
-  color: var(--accent);
-}
 
 /* Mobile menu toggle hidden on desktop */
 .mobile-menu-toggle {
@@ -1390,9 +1294,7 @@ body {
   cursor: pointer;
   color: white;
   z-index: 1001; /* keep above menu */
-  position: fixed;
-  top: 20px;
-  right: 20px;
+
 }
 
 /* Show hamburger on mobile only */

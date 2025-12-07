@@ -256,7 +256,7 @@ html, body {
 
 @media (max-width: 480px) {
     .hero-section {
-        height: 80vh;
+        height: 100dvh;
     }
     #scrollToTopBtn {
         width: 45px;

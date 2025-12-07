@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 // Import images and videos
-import aboutPhoto from '../assets/images/services/freeconsult.png';
+import aboutPhoto from '../assets/images/Services/freeconsult.png';
 import teamPhoto from '../assets/WhatsApp Image 2025-09-13 at 17.22.20_1881d174.jpg';
 import video4 from '../assets/videos/video4.mp4';
 import video2 from '../assets/videos/homedesign.mp4'

@@ -32,16 +32,17 @@ const Quote = () => {
         }
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatusMessage('Submitting...');
-        // In a real app, you would use fetch() or axios to send this to a backend server.
-        // For now, we'll just simulate a successful submission.
-        setTimeout(() => {
-            setStatusMessage('Thank you! Your quote request has been sent.');
-            e.target.reset();
-        }, 1500);
-    };
+const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log("Uploaded file:", file);  // <-- USE IT HERE
+
+    setStatusMessage('Submitting...');
+    setTimeout(() => {
+        setStatusMessage('Thank you! Your quote request has been sent.');
+        e.target.reset();
+    }, 1500);
+};
 
     return (
         <>

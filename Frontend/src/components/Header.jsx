@@ -5,7 +5,7 @@ import Navbar from './Navbar'; // Assuming this imports your Navbar
 const Header = () => {
   return (
     // If THIS div has a background, it will show up
-    <div className="site-header-wrapper" style={{ backgroundColor: 'gray' }}> 
+    <div className="site-header-wrapper"> 
     {/* Or in CSS: .site-header-wrapper { background-color: gray; } */}
       <Navbar />
     </div>

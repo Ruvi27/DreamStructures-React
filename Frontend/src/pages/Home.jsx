@@ -42,7 +42,6 @@ const Home = () => {
                 setShowScrollBtn(false);
             }
         };
-
         window.addEventListener('scroll', checkScrollTop);
         return () => window.removeEventListener('scroll', checkScrollTop);
     }, []);
@@ -52,12 +51,10 @@ const Home = () => {
     };
 
     return (
-        <>
-            
+        <>      
+        <Header />
             <main className="home-page">
-
-                <Header />
-
+                
                 {/* HERO SECTION WITH VIDEO BACKGROUND */}
                 <section className="hero-section">
                     <div className="hero-video-wrapper">
@@ -103,7 +100,6 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-
             </main>
             <Footer />
 

@@ -58,11 +58,11 @@ const Navbar = () => {
     return (
         <>
             {/* Main Header Bar - UPDATED className for scroll effect */}
-            <header
-                className={`fixed top-0 left-0 z-[9999] w-full px-6 py-5 transition-all duration-300 ease-in-out md:px-10 ${
-                    isNavVisible ? 'top-0' : '-top-24'
-                } ${isScrolled ? 'bg-black/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}
-            >
+<header
+    className={`fixed top-0 left-0 z-[9999] w-full px-6 py-5 transition-all duration-300 ease-in-out md:px-10 ${
+        isNavVisible ? 'top-0' : '-top-24'
+    } bg-transparent`}
+>
                 <div className="mx-auto flex max-w-screen-xl items-center justify-between">
                     {/* Logo */}
                     <Link to="/">

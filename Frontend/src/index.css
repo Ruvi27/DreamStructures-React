@@ -20,9 +20,9 @@ header {
   top: 0; left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(0,0,0,0.25); /* semi-transparent */
-  backdrop-filter: blur(12px);  /* glass effect */
-  -webkit-backdrop-filter: blur(12px);
+  /* background: rgba(0,0,0,0.25); semi-transparent */
+  /* backdrop-filter: blur(12px);  
+  -webkit-backdrop-filter: blur(12px); */
   border: none;
 }
 
@@ -547,14 +547,6 @@ footer {
   .footer-socials {
     margin-top: 10px;
   }
-}
-
-/* Basic Navbar Styling */
-header {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  z-index: 1000;
 }
 
 

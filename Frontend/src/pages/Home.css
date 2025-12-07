@@ -27,7 +27,7 @@ html, body {
 /* --- 2. HERO SECTION --- */
 .hero-section {
     position: relative;
-    height: 100vh; /* FULL SCREEN */
+    height: 100dvh; /* FULL SCREEN */
     width: 100vw;
     margin: 0;
     padding: 0;

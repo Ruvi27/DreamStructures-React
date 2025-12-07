@@ -260,7 +260,7 @@ html, body {
     }
     #scrollToTopBtn {
         width: 45px;
-        height: 45px;
+        height: 100dvh;
         font-size: 1rem;
         bottom: 20px;
         right: 20px;

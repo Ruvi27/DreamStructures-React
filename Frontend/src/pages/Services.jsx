@@ -5,16 +5,16 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 // Import images from your assets folder
-import freeConsultImg from '../assets/images/services/freeconsult.png';
-import electricalImg from '../assets/images/services/electrical.png';
-import kitchenTrolleyImg from '../assets/images/services/kitchen trolley.jpg';
-import commercialWorkImg from '../assets/images/services/commercial work.png';
-import residentialImg from '../assets/images/services/residential.png';
-import ceilingImg from '../assets/images/services/ceiling.png';
-import sofaImg from '../assets/images/services/sofa set.png';
-import paintingImg from '../assets/images/services/painting.jpg';
-import carpentryImg from '../assets/images/services/carpentry.png';
-import kitchenCabinetImg from '../assets/images/services/kitchen cabinet.png';
+import freeConsultImg from '../assets/images/Services/freeconsult.png';
+import electricalImg from '../assets/images/Services/electrical.png';
+import kitchenTrolleyImg from '../assets/images/Services/kitchen trolley.jpg';
+import commercialWorkImg from '../assets/images/Services/commercial work.png';
+import residentialImg from '../assets/images/Services/residential.png';
+import ceilingImg from '../assets/images/Services/ceiling.png';
+import sofaImg from '../assets/images/Services/sofa set.png';
+import paintingImg from '../assets/images/Services/painting.jpg';
+import carpentryImg from '../assets/images/Services/carpentry.png';
+import kitchenCabinetImg from '../assets/images/Services/kitchen cabinet.png';
 
 const Services = () => {
   const servicesData = [
